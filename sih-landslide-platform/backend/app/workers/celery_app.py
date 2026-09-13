@@ -1,6 +1,6 @@
 from celery import Celery
 
-from core.config import get_settings
+from app.core.config import get_settings
 
 settings = get_settings()
 
@@ -19,3 +19,4 @@ celery_app.conf.beat_schedule = {
 }
 celery_app.conf.task_acks_late = True
 celery_app.conf.task_default_retry_delay = 60
+

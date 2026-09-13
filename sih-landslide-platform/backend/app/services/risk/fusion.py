@@ -91,3 +91,4 @@ def categorize(risk_score: float) -> str:
     if risk_score >= 30:
         return "MODERATE"
     return "LOW"
+

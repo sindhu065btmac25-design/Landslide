@@ -1,8 +1,8 @@
-from core.config import get_settings
-from schemas.common import DataStatus, Location
-from schemas.weather import WeatherResponse
-from services.weather.demo_provider import build_demo_weather
-from services.weather.open_meteo_adapter import OpenMeteoAdapter
+from app.core.config import get_settings
+from app.schemas.common import DataStatus, Location
+from app.schemas.weather import WeatherResponse
+from app.services.weather.demo_provider import build_demo_weather
+from app.services.weather.open_meteo_adapter import OpenMeteoAdapter
 
 
 class WeatherService:
@@ -26,3 +26,4 @@ class WeatherService:
             )
             return demo
         return result
+

@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-from schemas.common import Location, SourceEnvelope
+from app.schemas.common import Location, SourceEnvelope
 
 
 class CurrentWeather(BaseModel):
@@ -25,3 +25,4 @@ class WeatherResponse(BaseModel):
     rainfall_24h_mm: float | None = None
     rainfall_72h_mm: float | None = None
     precipitation_anomaly_pct: float | None = None
+

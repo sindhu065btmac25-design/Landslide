@@ -3,7 +3,7 @@
 import uuid
 from datetime import datetime, timezone
 
-from schemas.domain import FeedbackRecord, FeedbackSubmission
+from app.schemas.domain import FeedbackRecord, FeedbackSubmission
 
 _STORE: list[FeedbackRecord] = []
 
@@ -18,3 +18,4 @@ class FeedbackService:
 
     def list_all(self) -> list[FeedbackRecord]:
         return list(_STORE)
+

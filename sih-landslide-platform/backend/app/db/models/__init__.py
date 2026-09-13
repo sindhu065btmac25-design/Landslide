@@ -99,3 +99,4 @@ class IngestionRun(Base):
     status = Column(String)
     records_processed = Column(Integer, default=0)
     error = Column(String, nullable=True)
+

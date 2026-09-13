@@ -4,7 +4,7 @@ by §17, with retry/backoff via Celery's autoretry mechanism."""
 import asyncio
 from datetime import datetime, timezone
 
-from workers.celery_app import celery_app
+from app.workers.celery_app import celery_app
 
 # NER district reference points sampled for scheduled ingestion.
 NER_SAMPLE_POINTS = [
@@ -22,8 +22,8 @@ def _run_record(job_name: str, provider: str):
 
 @celery_app.task(bind=True, max_retries=3, default_retry_delay=60)
 def ingest_weather(self):
-    from schemas.common import Location
-    from services.weather.service import WeatherService
+    from app.schemas.common import Location
+    from app.services.weather.service import WeatherService
 
     record = _run_record("ingest_weather", "open-meteo")
     try:
@@ -45,8 +45,8 @@ def ingest_weather(self):
 
 @celery_app.task(bind=True, max_retries=3, default_retry_delay=300)
 def ingest_satellite(self):
-    from schemas.common import Location
-    from services.satellite.service import SatelliteService
+    from app.schemas.common import Location
+    from app.services.satellite.service import SatelliteService
 
     record = _run_record("ingest_satellite", "sentinel-hub")
     try:
@@ -77,3 +77,4 @@ def ingest_soil_moisture(self):
 @celery_app.task(bind=True, max_retries=3, default_retry_delay=900)
 def ingest_precipitation(self):
     return ingest_weather.run()
+

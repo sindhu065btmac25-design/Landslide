@@ -3,8 +3,8 @@ is unreachable (no network) or DEMO_MODE is forced."""
 import hashlib
 from datetime import datetime, timezone
 
-from schemas.common import DataStatus, Location, SourceEnvelope
-from schemas.domain import AssetType, InfrastructureAsset, InfrastructureResponse
+from app.schemas.common import DataStatus, Location, SourceEnvelope
+from app.schemas.domain import AssetType, InfrastructureAsset, InfrastructureResponse
 
 
 def _offset(location: Location, salt: str, scale: float) -> float:
@@ -49,3 +49,4 @@ def build_demo_infrastructure(location: Location) -> InfrastructureResponse:
         ingested_at=now, message="DEMO MODE — synthetic assets, not real OSM data.",
     )
     return InfrastructureResponse(envelope=envelope, assets=assets)
+

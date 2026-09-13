@@ -9,7 +9,7 @@ import hashlib
 import json
 from pathlib import Path
 
-from schemas.common import Location
+from app.schemas.common import Location
 
 DATA_DIR = Path(__file__).resolve().parents[4] / "data" / "raw" / "historical"
 
@@ -77,3 +77,4 @@ class HistoricalEventService:
         seeded = _seed(location, "hist")
         return {"historical_density": round(seeded * 0.6, 3), "event_count": 0,
                 "source": "no historical dataset loaded — seeded placeholder, see data/raw/historical/README.md"}
+

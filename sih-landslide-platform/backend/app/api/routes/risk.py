@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Query
 
-from schemas.common import Location
-from schemas.risk import RiskAssessment
-from services.risk.engine import RiskEngine
+from app.schemas.common import Location
+from app.schemas.risk import RiskAssessment
+from app.services.risk.engine import RiskEngine
 
 router = APIRouter(prefix="/api/v1/risk", tags=["risk"])
 engine = RiskEngine()
@@ -53,3 +53,4 @@ async def risk_grid(state: str | None = None, cell_deg: float = 1.0, sample_limi
             "risk_score": assessment.risk_score, "category": assessment.category,
         })
     return {"cells": results, "note": "Coarse sampled demo grid — production uses cached PostGIS risk_grid_cells."}
+

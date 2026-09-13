@@ -33,3 +33,4 @@ def _safe_ratio(numerator: np.ndarray, denominator: np.ndarray, additive: bool =
     with np.errstate(divide="ignore", invalid="ignore"):
         result = np.where(denominator != 0, numerator / denominator, 0.0)
     return result if additive else np.clip(result, 0, 10)
+

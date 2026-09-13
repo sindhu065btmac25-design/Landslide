@@ -5,13 +5,13 @@ from fastapi import FastAPI, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.requests import Request
 
-from api.routes import (
+from app.api.routes import (
     alerts, analytics, feedback, health, infrastructure, risk, satellite, terrain, weather,
 )
-from core.config import get_settings
-from core.logging import configure_logging, new_request_id, request_id_ctx
-from schemas.common import Location
-from services.risk.engine import RiskEngine
+from app.core.config import get_settings
+from app.core.logging import configure_logging, new_request_id, request_id_ctx
+from app.schemas.common import Location
+from app.services.risk.engine import RiskEngine
 
 configure_logging()
 logger = logging.getLogger("app")
@@ -79,3 +79,4 @@ async def ws_risk(websocket: WebSocket):
             await asyncio.sleep(30)
     except WebSocketDisconnect:
         logger.info("WebSocket client disconnected")
+

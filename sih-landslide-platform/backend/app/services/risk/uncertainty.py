@@ -28,3 +28,4 @@ def estimate_uncertainty(normalized_features: dict[str, float], missing_feature_
         "basis": "feature-completeness + decision-boundary distance (rule-based model; "
                  "not an ensemble/MC-dropout estimate — see ai/uncertainty/README.md)",
     }
+

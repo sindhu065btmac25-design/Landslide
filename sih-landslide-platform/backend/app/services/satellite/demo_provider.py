@@ -3,7 +3,7 @@ reports UNAVAILABLE. Clearly labeled DEMO, never framed as a real acquisition.""
 import hashlib
 from datetime import datetime, timedelta, timezone
 
-from schemas.common import DataStatus, Location, SourceEnvelope
+from app.schemas.common import DataStatus, Location, SourceEnvelope
 
 
 def _seed(location: Location, salt: str) -> float:
@@ -29,3 +29,4 @@ def build_demo_satellite_summary(location: Location) -> dict:
         "sar_change_score": sar_change,
         "cloud_cover_pct": round(_seed(location, "cloud") * 40, 1),
     }
+

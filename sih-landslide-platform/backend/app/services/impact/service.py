@@ -4,9 +4,9 @@ PostGIS ST_DWithin/ST_Intersects over risk polygons; this uses a radius
 proxy so it works without a live PostGIS instance in this scaffold."""
 import math
 
-from schemas.common import Location
-from schemas.domain import AssetType, ImpactSummary, InfrastructureAsset
-from schemas.risk import RiskCategory
+from app.schemas.common import Location
+from app.schemas.domain import AssetType, ImpactSummary, InfrastructureAsset
+from app.schemas.risk import RiskCategory
 
 
 def _haversine_km(a_lat, a_lon, b_lat, b_lon) -> float:
@@ -43,3 +43,4 @@ class ImpactService:
             affected_settlements=settlements, estimated_population_exposure=population,
             ranked_assets=affected,
         )
+

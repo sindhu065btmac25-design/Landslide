@@ -9,7 +9,7 @@ real reads later is a one-file change.
 """
 import hashlib
 
-from schemas.common import Location
+from app.schemas.common import Location
 
 
 def _seed(location: Location, salt: str) -> float:
@@ -30,3 +30,4 @@ def get_terrain_features(location: Location) -> dict:
         "terrain_ruggedness_index": ruggedness,
         "source": "demo-dem-generator (Copernicus DEM adapter interface, not yet credentialed)",
     }
+

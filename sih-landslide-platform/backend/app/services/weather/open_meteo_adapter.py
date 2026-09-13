@@ -8,9 +8,9 @@ from datetime import datetime, timezone
 
 import httpx
 
-from core.config import get_settings
-from schemas.common import DataStatus, Location, SourceEnvelope
-from schemas.weather import CurrentWeather, HourlyForecastPoint, WeatherResponse
+from app.core.config import get_settings
+from app.schemas.common import DataStatus, Location, SourceEnvelope
+from app.schemas.weather import CurrentWeather, HourlyForecastPoint, WeatherResponse
 
 HOURLY_VARS = [
     "precipitation",
@@ -113,3 +113,4 @@ class OpenMeteoAdapter:
             return round(total, 2)
         except (ValueError, TypeError):
             return None
+

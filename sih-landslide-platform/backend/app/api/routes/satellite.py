@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Query
 
-from schemas.common import Location
-from services.satellite.service import SatelliteService
+from app.schemas.common import Location
+from app.services.satellite.service import SatelliteService
 
 router = APIRouter(prefix="/api/v1/satellite", tags=["satellite"])
 service = SatelliteService()
@@ -15,3 +15,4 @@ async def latest(lat: float = Query(...), lon: float = Query(...)):
 @router.get("/change")
 async def change(lat: float = Query(...), lon: float = Query(...)):
     return await service.get_change_summary(Location(latitude=lat, longitude=lon))
+

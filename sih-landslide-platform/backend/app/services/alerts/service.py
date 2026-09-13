@@ -3,10 +3,10 @@ In-memory state here; production build persists to the `alerts` table."""
 import uuid
 from datetime import datetime, timedelta, timezone
 
-from core.config import get_settings
-from schemas.common import Location
-from schemas.domain import Alert, AlertSeverity
-from schemas.risk import RiskCategory
+from app.core.config import get_settings
+from app.schemas.common import Location
+from app.schemas.domain import Alert, AlertSeverity
+from app.schemas.risk import RiskCategory
 
 _STATE: dict[str, dict] = {}  # cache_key -> {"category": ..., "last_alert_at": ...}
 
@@ -51,3 +51,4 @@ class AlertService:
             recommended_actions=recommended_actions,
             created_at=now,
         )
+

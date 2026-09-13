@@ -1,7 +1,7 @@
-from core.config import get_settings
-from schemas.common import DataStatus, Location
-from services.satellite.demo_provider import build_demo_satellite_summary
-from services.satellite.sentinel_hub_adapter import SentinelHubAdapter
+from app.core.config import get_settings
+from app.schemas.common import DataStatus, Location
+from app.services.satellite.demo_provider import build_demo_satellite_summary
+from app.services.satellite.sentinel_hub_adapter import SentinelHubAdapter
 
 
 class SatelliteService:
@@ -20,3 +20,4 @@ class SatelliteService:
         # Real acquisition found: index computation would run here against
         # downloaded band arrays (see indices.py) — omitted pending credentials.
         return result
+

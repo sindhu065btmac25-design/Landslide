@@ -3,7 +3,7 @@ from enum import Enum
 
 from pydantic import BaseModel
 
-from schemas.common import Location, SourceEnvelope
+from app.schemas.common import Location, SourceEnvelope
 
 
 class RiskCategory(str, Enum):
@@ -43,3 +43,4 @@ class RiskAssessment(BaseModel):
     data_sources: list[SourceEnvelope]
     previous_risk_score: float | None = None
     trend_explanation: str | None = None
+

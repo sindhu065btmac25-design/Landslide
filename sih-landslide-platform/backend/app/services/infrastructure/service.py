@@ -1,8 +1,8 @@
-from core.config import get_settings
-from schemas.common import DataStatus, Location
-from schemas.domain import InfrastructureResponse
-from services.infrastructure.demo_provider import build_demo_infrastructure
-from services.infrastructure.overpass_adapter import OverpassAdapter
+from app.core.config import get_settings
+from app.schemas.common import DataStatus, Location
+from app.schemas.domain import InfrastructureResponse
+from app.services.infrastructure.demo_provider import build_demo_infrastructure
+from app.services.infrastructure.overpass_adapter import OverpassAdapter
 
 
 class InfrastructureService:
@@ -19,3 +19,4 @@ class InfrastructureService:
             demo.envelope.message = f"Live OSM source unavailable; showing DEMO fallback."
             return demo
         return result
+

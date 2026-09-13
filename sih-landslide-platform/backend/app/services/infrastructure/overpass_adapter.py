@@ -7,9 +7,9 @@ from datetime import datetime, timezone
 
 import httpx
 
-from core.config import get_settings
-from schemas.common import DataStatus, Location, SourceEnvelope
-from schemas.domain import AssetType, InfrastructureAsset, InfrastructureResponse
+from app.core.config import get_settings
+from app.schemas.common import DataStatus, Location, SourceEnvelope
+from app.schemas.domain import AssetType, InfrastructureAsset, InfrastructureResponse
 
 OVERPASS_QUERY_TEMPLATE = """
 [out:json][timeout:25];
@@ -80,3 +80,4 @@ class OverpassAdapter:
                 )
             )
         return assets
+

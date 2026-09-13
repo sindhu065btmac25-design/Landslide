@@ -1,11 +1,11 @@
 from fastapi import APIRouter, Query
 
-from schemas.common import Location
-from services.alerts.service import AlertService
-from services.decision.service import DecisionService
-from services.impact.service import ImpactService
-from services.infrastructure.service import InfrastructureService
-from services.risk.engine import RiskEngine
+from app.schemas.common import Location
+from app.services.alerts.service import AlertService
+from app.services.decision.service import DecisionService
+from app.services.impact.service import ImpactService
+from app.services.infrastructure.service import InfrastructureService
+from app.services.risk.engine import RiskEngine
 
 router = APIRouter(prefix="/api/v1/alerts", tags=["alerts"])
 engine = RiskEngine()
@@ -28,3 +28,4 @@ async def check_alert(lat: float = Query(...), lon: float = Query(...)):
         [a.name or a.id for a in impact.ranked_assets], decision.actions,
     )
     return {"alert": alert, "assessment_category": assessment.category}
+

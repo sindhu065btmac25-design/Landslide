@@ -9,8 +9,8 @@ build-up so judges can watch risk "increase" across a demo session.
 import hashlib
 from datetime import datetime, timedelta, timezone
 
-from schemas.common import DataStatus, Location, SourceEnvelope
-from schemas.weather import CurrentWeather, HourlyForecastPoint, WeatherResponse
+from app.schemas.common import DataStatus, Location, SourceEnvelope
+from app.schemas.weather import CurrentWeather, HourlyForecastPoint, WeatherResponse
 
 
 def _seed(location: Location, bucket: int) -> float:
@@ -67,3 +67,4 @@ def build_demo_weather(location: Location) -> WeatherResponse:
         rainfall_72h_mm=rainfall_72h,
         precipitation_anomaly_pct=round((base - 0.5) * 100, 1),
     )
+

@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Query
 
-from schemas.common import Location
-from services.risk.engine import RiskEngine
+from app.schemas.common import Location
+from app.services.risk.engine import RiskEngine
 
 router = APIRouter(prefix="/api/v1/analytics", tags=["analytics"])
 engine = RiskEngine()
@@ -18,3 +18,4 @@ async def timeseries(lat: float = Query(...), lon: float = Query(...)):
         "trend_explanation": assessment.trend_explanation,
         "note": "Full historical series requires the persisted risk_predictions table (PostGIS), not populated in this scaffold run.",
     }
+

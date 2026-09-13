@@ -29,3 +29,4 @@ class SourceEnvelope(BaseModel):
     ingested_at: datetime
     age_seconds: float | None = None
     message: str | None = None
+

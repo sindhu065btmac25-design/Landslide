@@ -3,8 +3,8 @@ from enum import Enum
 
 from pydantic import BaseModel
 
-from schemas.common import Location, SourceEnvelope
-from schemas.risk import RiskCategory
+from app.schemas.common import Location, SourceEnvelope
+from app.schemas.risk import RiskCategory
 
 
 class AssetType(str, Enum):
@@ -84,3 +84,4 @@ class FeedbackSubmission(BaseModel):
 class FeedbackRecord(FeedbackSubmission):
     id: str
     created_at: datetime
+

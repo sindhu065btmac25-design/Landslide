@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-from core.config import get_settings
+from app.core.config import get_settings
 
 router = APIRouter(tags=["health"])
 
@@ -27,3 +27,4 @@ async def data_sources_status():
             "historical-events": "see /data/raw/historical",
         },
     }
+

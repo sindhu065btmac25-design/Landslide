@@ -10,7 +10,7 @@ because the model IS linear-in-features until the logistic squash). If/when
 module's interface is unchanged — only where `contributions` comes from
 changes (real SHAP values instead of linear terms).
 """
-from schemas.risk import RiskDriver
+from app.schemas.risk import RiskDriver
 
 FACTOR_LABELS = {
     "rainfall_24h": "24h rainfall",
@@ -37,3 +37,4 @@ def build_drivers(contributions: dict[str, float], normalized: dict[str, float])
             )
         )
     return drivers
+

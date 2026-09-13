@@ -1,16 +1,16 @@
 from datetime import datetime, timezone
 
-from core.config import get_settings
-from schemas.common import Location
-from schemas.risk import DataFreshnessEntry, RiskAssessment, RiskCategory
-from services.historical.service import HistoricalEventService
-from services.infrastructure.service import InfrastructureService
-from services.risk.explainability import build_drivers
-from services.risk.fusion import FeatureBundle, categorize, score
-from services.risk.uncertainty import estimate_uncertainty
-from services.satellite.service import SatelliteService
-from services.terrain.demo_dem import get_terrain_features
-from services.weather.service import WeatherService
+from app.core.config import get_settings
+from app.schemas.common import Location
+from app.schemas.risk import DataFreshnessEntry, RiskAssessment, RiskCategory
+from app.services.historical.service import HistoricalEventService
+from app.services.infrastructure.service import InfrastructureService
+from app.services.risk.explainability import build_drivers
+from app.services.risk.fusion import FeatureBundle, categorize, score
+from app.services.risk.uncertainty import estimate_uncertainty
+from app.services.satellite.service import SatelliteService
+from app.services.terrain.demo_dem import get_terrain_features
+from app.services.weather.service import WeatherService
 
 # In-memory "previous assessment" cache for trend explanation. A real
 # deployment persists this in risk_predictions (PostGIS) — see db/models.
@@ -100,3 +100,4 @@ class RiskEngine:
         top = drivers[0].factor if drivers else "the leading factor"
         direction = "increased" if delta > 0 else "decreased"
         return f"Risk {direction} by {abs(round(delta,1))} points, primarily driven by {top.lower()}."
+

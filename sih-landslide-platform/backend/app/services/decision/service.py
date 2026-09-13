@@ -1,7 +1,7 @@
 """Decision engine: rule table straight from spec §14. Recommendations are
 decision-support suggestions, never autonomous orders."""
-from schemas.domain import DecisionRecommendation
-from schemas.risk import RiskCategory
+from app.schemas.domain import DecisionRecommendation
+from app.schemas.risk import RiskCategory
 
 ACTIONS = {
     RiskCategory.LOW: ["Continue routine monitoring"],
@@ -23,3 +23,4 @@ class DecisionService:
         if population_exposure > 1000 and risk_category in (RiskCategory.HIGH, RiskCategory.VERY_HIGH, RiskCategory.CRITICAL):
             actions.append(f"~{population_exposure} people estimated in the exposure zone — escalate priority")
         return DecisionRecommendation(risk_category=risk_category, actions=actions)
+

@@ -10,8 +10,8 @@ from datetime import datetime, timezone
 
 import httpx
 
-from core.config import get_settings
-from schemas.common import DataStatus, Location, SourceEnvelope
+from app.core.config import get_settings
+from app.schemas.common import DataStatus, Location, SourceEnvelope
 
 TOKEN_URL = "https://identity.dataspace.copernicus.eu/auth/realms/CDSE/protocol/openid-connect/token"
 
@@ -93,3 +93,4 @@ class SentinelHubAdapter:
                 ),
                 "acquisition": None,
             }
+

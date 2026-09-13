@@ -1,14 +1,14 @@
 import asyncio
 from datetime import datetime, timezone
 
-from workers.celery_app import celery_app
-from workers.ingestion_jobs import NER_SAMPLE_POINTS
+from app.workers.celery_app import celery_app
+from app.workers.ingestion_jobs import NER_SAMPLE_POINTS
 
 
 @celery_app.task(bind=True, max_retries=3, default_retry_delay=60)
 def update_risk(self):
-    from schemas.common import Location
-    from services.risk.engine import RiskEngine
+    from app.schemas.common import Location
+    from app.services.risk.engine import RiskEngine
 
     started = datetime.now(timezone.utc)
     try:
@@ -33,10 +33,10 @@ def update_risk(self):
 def update_impact(self):
     # Depends on update_risk + infrastructure being fresh; recomputes impact
     # for the sample points as a placeholder for the full PostGIS join.
-    from schemas.common import Location
-    from services.impact.service import ImpactService
-    from services.infrastructure.service import InfrastructureService
-    from services.risk.engine import RiskEngine
+    from app.schemas.common import Location
+    from app.services.impact.service import ImpactService
+    from app.services.infrastructure.service import InfrastructureService
+    from app.services.risk.engine import RiskEngine
 
     started = datetime.now(timezone.utc)
     try:
@@ -62,12 +62,12 @@ def update_impact(self):
 
 @celery_app.task(bind=True, max_retries=3, default_retry_delay=60)
 def generate_alerts(self):
-    from schemas.common import Location
-    from services.alerts.service import AlertService
-    from services.decision.service import DecisionService
-    from services.impact.service import ImpactService
-    from services.infrastructure.service import InfrastructureService
-    from services.risk.engine import RiskEngine
+    from app.schemas.common import Location
+    from app.services.alerts.service import AlertService
+    from app.services.decision.service import DecisionService
+    from app.services.impact.service import ImpactService
+    from app.services.infrastructure.service import InfrastructureService
+    from app.services.risk.engine import RiskEngine
 
     started = datetime.now(timezone.utc)
     try:
@@ -98,3 +98,4 @@ def generate_alerts(self):
                 "status": "success", "records_processed": len(alerts)}
     except Exception as exc:  # noqa: BLE001
         raise self.retry(exc=exc)
+
